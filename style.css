@@ -1,0 +1,279 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+    background: url('2.png') no-repeat center center fixed; /* Set the background image */
+    background-size: cover; /* Ensure the background image covers the entire area */
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: fixed; /* Make the header fixed */
+    width: 100%; /* Ensure the header takes the full width */
+    top: 0; /* Position it at the top of the page */
+    z-index: 10; /* Ensure header is above other content */
+    transition: all 0.3s ease; /* Smooth transition for header changes */
+}
+
+header.small {
+    padding: 5px 0; /* Reduce padding when scrolling */
+}
+
+header.small .logo img {
+    height: 50px; /* Reduce logo size when scrolling */
+}
+
+header.small nav ul li a {
+    font-size: 0.8em; /* Reduce font size when scrolling */
+    padding: 5px 10px; /* Reduce padding for menu items when scrolling */
+}
+
+.logo img {
+    height: 70px; /* Adjust the height to make the logo bigger */
+    width: auto;
+    border-radius: 50%; /* Make the logo circular */
+    animation: spin 5s linear infinite; /* Add spin animation */
+    animation-timing-function: ease-in-out; /* Smooth start and end */
+    animation-iteration-count: infinite; /* Repeat the animation */
+    animation-delay: 5s; /* Delay between spins */
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    20% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+nav {
+    flex-grow: 1; /* Allow nav to grow and take available space */
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Center the menu items */
+    gap: 15px; /* Space out the menu items */
+}
+
+nav ul li {
+    position: relative; /* Needed for dropdown positioning */
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9em; /* Reduce the text size */
+    font-weight: 500; /* Add moderate weight to the text */
+    padding: 8px 12px; /* Adjust padding for a modern look */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    transition: color 0.3s, background-color 0.3s; /* Smooth transition for color and background */
+}
+
+nav ul li a:hover {
+    color: #333;
+    background-color: #1abc9c; /* Change background color on hover */
+}
+
+nav ul li a.highlight {
+    background-color: #1abc9c; /* Highlight background color */
+    color: #333; /* Highlight text color */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for highlight */
+}
+
+nav ul li a.highlight:hover {
+    animation: highlightAnimation 0.5s ease-in-out; /* Add animation on hover */
+}
+
+@keyframes highlightAnimation {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.search-form {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 100%; /* Position below the header */
+    right: 50px; /* Move to the left */
+    margin-top: 10px; /* Add some space below the header */
+}
+
+.search-form input[type="text"] {
+    border: none;
+    padding: 10px;
+    font-size: 1em;
+    outline: none;
+    width: 200px;
+}
+
+.search-form button {
+    background-color: #1abc9c;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-form button:hover {
+    background-color: #16a085;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #333;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 20; /* Ensure dropdown is above other content */
+    top: 100%; /* Position below the parent li */
+    left: 0;
+    border-radius: 5px; /* Add border radius for dropdown */
+    overflow: hidden; /* Ensure rounded corners are visible */
+}
+
+.dropdown-content li {
+    margin: 0;
+}
+
+.dropdown-content li a {
+    color: white;
+    padding: 10px 15px; /* Adjust padding for dropdown items */
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-content li a:hover {
+    background-color: #1abc9c;
+    color: white; /* Ensure text color remains white on hover */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.hero {
+    background: url('2.png') no-repeat center center/cover; /* Set the background image for the hero section */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    margin-top: 80px; /* Add margin to avoid content being hidden behind the fixed header */
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    z-index: 1;
+}
+
+.hero h1, .hero p {
+    position: relative;
+    z-index: 2;
+    padding: 10px;
+    border-radius: 5px;
+    color: white; /* Ensure text color is white */
+}
+
+.hero h1::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* More opaque semi-transparent bar */
+    z-index: -1;
+    border-radius: 5px;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin: 0;
+    font-weight: bold; /* Make the text bold */
+    background: linear-gradient(90deg, #ff7e5f, #feb47b, #ffcc33, #ffff66, #ff7e5f); /* Bright gradient text color */
+    background-size: 200% auto;
+    color: #fff; /* Set text color to white */
+    animation: chromaticMove 5s linear infinite;
+    position: relative;
+}
+
+@keyframes chromaticMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-top: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    animation: colorChange 3s infinite;
+}
+
+@keyframes colorChange {
+    0% { color: #ff7e5f; }
+    25% { color: #feb47b; }
+    50% { color: #ffcc33; }
+    75% { color: #ffff66; }
+    100% { color: #ff7e5f; }
+}
+
+.content {
+    padding: 60px 20px;
+    background-color: white;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0; /* Decrease padding for a more compact look */
+    font-size: 0.8em; /* Reduce font size for a smaller look */
+    border-top: 3px solid #1abc9c; /* Add a top border for a cute effect */
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
